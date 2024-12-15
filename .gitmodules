@@ -1,0 +1,3 @@
+[submodule "client-gaeway"]
+	path = client-gaeway
+	url = https://github.com/microservices-jdvpl/products-gateway.git
