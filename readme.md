@@ -7,6 +7,12 @@
 3. excute `git submodule --init --recursive` to rebuild repos
 
 ```
-
     docker-compose up -d
+```
+
+
+## add a module
+
+```
+    git submodule add https://github.com/microservices-jdvpl/payments-ms
 ```
