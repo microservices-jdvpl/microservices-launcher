@@ -7,3 +7,6 @@
 [submodule "products-ms"]
 	path = products-ms
 	url = https://github.com/microservices-jdvpl/products-microserve-tcp.git
+[submodule "payments-ms"]
+	path = payments-ms
+	url = https://github.com/microservices-jdvpl/payments-ms
