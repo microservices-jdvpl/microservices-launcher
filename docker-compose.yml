@@ -33,6 +33,7 @@ services:
     command: npm run dev
     environment:
       - NATS_SERVERS=nats://nats-server:4222
+      - MONGODB_URL=${MONGODB_URL}
 
   orders-ms:
     depends_on:
