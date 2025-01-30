@@ -25,6 +25,14 @@ services:
       - PORT=8000
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=file:./dev.db
+  auth-ms:
+    build: ./auth-ms
+    container_name: auth-ms
+    volumes:
+      - ./auth-ms/src:/usr/src/app/src
+    command: npm run dev
+    environment:
+      - NATS_SERVERS=nats://nats-server:4222
 
   orders-ms:
     depends_on:
