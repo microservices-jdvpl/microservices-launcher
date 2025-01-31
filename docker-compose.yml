@@ -16,15 +16,6 @@ services:
       - PORT=8000
       - NATS_SERVERS=nats://nats-server:4222
   
-  products-ms:
-    build: ./products-ms
-    volumes:
-      - ./products-ms/src:/usr/src/app/src
-    command: npm run dev
-    environment:
-      - PORT=8000
-      - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=file:./dev.db
   auth-ms:
     build: ./auth-ms
     container_name: auth-ms
@@ -34,6 +25,7 @@ services:
     environment:
       - NATS_SERVERS=nats://nats-server:4222
       - MONGODB_URL=${MONGODB_URL}
+      - JWT_SECRET=${JWT_SECRET}
 
   orders-ms:
     depends_on:
@@ -75,5 +67,12 @@ services:
       - STRIPE_SUCCESS_URL=${STRIPE_SUCCESS_URL}
       - STRIPE_CANCEL_URL=${STRIPE_CANCEL_URL}
       - STRIPE_ENDPOINTSECRET=${STRIPE_ENDPOINTSECRET}
-
-
+  products-ms:
+    build: ./products-ms
+    volumes:
+      - ./products-ms/src:/usr/src/app/src
+    command: npm run dev
+    environment:
+      - PORT=8000
+      - NATS_SERVERS=nats://nats-server:4222
+      - DATABASE_URL=file:./dev.db
