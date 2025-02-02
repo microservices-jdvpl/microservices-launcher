@@ -8,7 +8,7 @@ services:
     build: 
       context: ./client-gaeway
       dockerfile: dockerfile.prod
-    image: client-gateway-prod
+    image: us-east1-docker.pkg.dev/microservices-store-449702/registry-image/client-gateway-prd
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
@@ -19,7 +19,7 @@ services:
     build: 
       context: ./auth-ms
       dockerfile: dockerfile.prod
-    image: auth-ms-prod
+    image: us-east1-docker.pkg.dev/microservices-store-449702/registry-image/auth-ms-prd
     environment:
       - NATS_SERVERS=nats://nats-server:4222
       - MONGODB_URL=${MONGODB_URL}
@@ -29,7 +29,7 @@ services:
     build: 
       context: ./products-ms
       dockerfile: dockerfile.prod
-    image: products-ms-prod
+    image: us-east1-docker.pkg.dev/microservices-store-449702/registry-image/products-ms-prod
     environment:
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=file:./dev.db
@@ -40,30 +40,19 @@ services:
       dockerfile: dockerfile.prod
       args:
         - ORDERS_DATABASE_URL=${ORDERS_DATABASE_URL}
-    image: orders-ms-prod
+    image: us-east1-docker.pkg.dev/microservices-store-449702/registry-image/orders-ms-prod
     environment:
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=${ORDERS_DATABASE_URL}
 
-  # orders-db:
-  #   container_name: orders_database
-  #   image: postgres:16.2
-  #   restart: always
-  #   volumes:
-  #     - ./orders-ms/postgres:/var/lib/postgresql/data
-  #   ports:
-  #     - 5434:5432
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: jiren
-  #     POSTGRES_DB: ordersdb
+
 
   payments-ms:
     container_name: payments-ms
     build: 
       context: ./payments-ms
       dockerfile: dockerfile.prod
-    image: payments-ms-prod
+    image: us-east1-docker.pkg.dev/microservices-store-449702/registry-image/payments-ms-prod
     ports:
       - ${PAYMENTS_MS_PORT}:${PAYMENTS_MS_PORT}
     environment:
