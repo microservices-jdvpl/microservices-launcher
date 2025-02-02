@@ -16,3 +16,9 @@
 ```
     git submodule add https://github.com/microservices-jdvpl/payments-ms
 ```
+
+## run for prod
+
+```
+ docker compose -f docker-compose.prod.yml build
+```
