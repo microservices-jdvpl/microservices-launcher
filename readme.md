@@ -42,3 +42,15 @@
 ```
     kubectl patch serviceaccounts default -p '{"imagePullSecrets":[{"name":"grc-json-key"}]}'
 ```
+
+## create secret
+
+```
+    kubectl create secret generic payments-secrets --from-literal=STRIPE_ENDPOINTSECRET="******" --from-literal=STRIPE_SECRET="******"
+```
+
+## get secret yaml:
+
+```
+    kubectl get secrets payments-secrets -o yaml
+```
